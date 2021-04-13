@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json.schemastore.org/proxies",
+  "proxies": {
+    "indexProxy": {
+      "matchCondition": {
+        "route": "/"
+      },
+      "backendUri": "https://www.fl4v.com/main"
+    }
+  }
+}
