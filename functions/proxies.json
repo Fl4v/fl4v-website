@@ -3,6 +3,7 @@
   "proxies": {
     "indexProxy": {
       "matchCondition": {
+        "methods": ["GET"],
         "route": "/"
       },
       "backendUri": "https://www.fl4v.com/main"
