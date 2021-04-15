@@ -1,5 +1,6 @@
-from azure import functions
 import os
+
+from azure import functions
 
 
 def main(req: functions.HttpRequest) -> functions.HttpResponse:
