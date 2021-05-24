@@ -6,7 +6,7 @@
         "methods": ["GET"],
         "route": "/"
       },
-      "backendUri": "https://www.fl4v.com/main"
+      "backendUri": "https://fl4v.com/main"
     }
   }
 }
