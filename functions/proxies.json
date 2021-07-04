@@ -1,12 +1,4 @@
 {
   "$schema": "http://json.schemastore.org/proxies",
-  "proxies": {
-    "indexProxy": {
-      "matchCondition": {
-        "methods": ["GET"],
-        "route": "/"
-      },
-      "backendUri": "https://fl4v.com/main"
-    }
-  }
+  "proxies": {}
 }
