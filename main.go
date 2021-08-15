@@ -7,8 +7,6 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
-var lambdaError string
-
 func lambdaHandler() (events.APIGatewayProxyResponse, error) {
 
 	data, err := ioutil.ReadFile("index.html")
