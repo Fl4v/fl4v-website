@@ -7,3 +7,10 @@ Fl4v.com is a serverless website hosted on Microsft Azure and powerd by <img src
 - [`Golang 1.x`](https://golang.org/dl/)
 - [`Docker`](https://www.docker.com/products/docker-desktop)
 - [`AWS SAM`](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started.html) - For local development
+
+### Build & Run
+
+```bash
+make build
+make run
+```
