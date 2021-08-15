@@ -13,3 +13,6 @@
 
 # AWS SAM
 .aws-sam/
+
+# VSCode
+.vscode/
