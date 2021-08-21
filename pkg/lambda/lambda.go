@@ -9,9 +9,9 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
-var lambdaError error
-
 func lambdaHandler() (events.APIGatewayProxyResponse, error) {
+
+	var lambdaError error
 
 	resp, err := http.Get("https://fl4v-web.s3.eu-west-1.amazonaws.com/home/index.html")
 
