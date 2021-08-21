@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"errors"
 	"io/ioutil"
 	"net/http"
@@ -13,7 +14,7 @@ func lambdaHandler() (events.APIGatewayProxyResponse, error) {
 
 	var lambdaError error
 
-	resp, err := http.Get("https://fl4v-web.s3.eu-west-1.amazonaws.com/home/index.html")
+	resp, err := http.Get("https://fl4v-web.s3.eu-west-1.amazonaws.com/home/index.htm")
 
 	if err != nil {
 		lambdaError = err
@@ -30,12 +31,20 @@ func lambdaHandler() (events.APIGatewayProxyResponse, error) {
 	}
 
 	if lambdaError != nil {
+		errorBody, err := json.Marshal(map[string]string{
+			"error": lambdaError.Error(),
+		})
+
+		if err != nil {
+			panic(err)
+		}
+
 		return events.APIGatewayProxyResponse{
-			Body:       lambdaError.Error(),
 			StatusCode: 500,
 			Headers: map[string]string{
-				"Content-Type": "text/plain",
+				"Content-Type": "application/json",
 			},
+			Body: string(errorBody),
 		}, nil
 	}
 
