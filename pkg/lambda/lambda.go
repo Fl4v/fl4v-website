@@ -15,16 +15,6 @@ func lambdaHandler() (events.APIGatewayProxyResponse, error) {
 
 	resp, err := http.Get("https://fl4v-web.s3.eu-west-1.amazonaws.com/home/index.html")
 
-	if resp.StatusCode != 200 {
-		data, err := ioutil.ReadAll(resp.Body)
-
-		if err != nil {
-			lambdaError = err
-		}
-
-		lambdaError = errors.New(string(data))
-	}
-
 	if err != nil {
 		lambdaError = err
 	}
@@ -33,6 +23,10 @@ func lambdaHandler() (events.APIGatewayProxyResponse, error) {
 
 	if err != nil {
 		lambdaError = err
+	}
+
+	if resp.StatusCode != 200 {
+		lambdaError = errors.New(string(data))
 	}
 
 	if lambdaError != nil {
