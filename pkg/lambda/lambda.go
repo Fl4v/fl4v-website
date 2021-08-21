@@ -1,22 +1,44 @@
 package main
 
 import (
+	"errors"
 	"io/ioutil"
+	"net/http"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
 )
 
+var lambdaError error
+
 func lambdaHandler() (events.APIGatewayProxyResponse, error) {
 
-	// var error string
+	resp, err := http.Get("https://fl4v-web.s3.eu-west-1.amazonaws.com/home/index.html")
 
-	data, err := ioutil.ReadFile("index.html")
+	if resp.StatusCode != 200 {
+		data, err := ioutil.ReadAll(resp.Body)
+
+		if err != nil {
+			lambdaError = err
+		}
+
+		lambdaError = errors.New(string(data))
+	}
 
 	if err != nil {
+		lambdaError = err
+	}
+
+	data, err := ioutil.ReadAll(resp.Body)
+
+	if err != nil {
+		lambdaError = err
+	}
+
+	if lambdaError != nil {
 		return events.APIGatewayProxyResponse{
-			Body:       err.Error(),
-			StatusCode: 404,
+			Body:       lambdaError.Error(),
+			StatusCode: 500,
 			Headers: map[string]string{
 				"Content-Type": "text/plain",
 			},
