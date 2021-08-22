@@ -4,6 +4,7 @@ import (
 	"os"
 
 	"github.com/aws/aws-cdk-go/awscdk"
+	"github.com/aws/aws-cdk-go/awscdk/awslambda"
 	"github.com/aws/aws-cdk-go/awscdk/awslambdago"
 	"github.com/aws/constructs-go/constructs/v3"
 	"github.com/aws/jsii-runtime-go"
@@ -24,6 +25,7 @@ func lambdaStack(scope constructs.Construct, id string, props *stackProps) awscd
 	awslambdago.NewGoFunction(stack, jsii.String("fl4v-web"), &awslambdago.GoFunctionProps{
 		FunctionName: jsii.String("fl4v-web"),
 		Entry:        jsii.String("../lambda/lambda.go"),
+		Runtime:      awslambda.Runtime_GO_1_X(),
 	})
 
 	return stack
