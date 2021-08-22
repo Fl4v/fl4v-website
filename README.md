@@ -22,7 +22,7 @@ Invoke Lambda via a `GET` request on `localhost:3000/index`
 From the `pkg/infrastructure/` directory
 
 ```bash
-# Check cdf diff
+# Check cdk diff
 cdk diff
 # Deploy
 cdk deploy
