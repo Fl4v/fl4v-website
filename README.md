@@ -30,4 +30,5 @@ cdk deploy
 
 #### To Do
 
+- [ ] Add unit tests
 - [ ] Add api gateway stack configuration
