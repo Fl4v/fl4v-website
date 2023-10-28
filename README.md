@@ -1,34 +1,24 @@
-## [Fl4v.com](https://fl4v.com)
+# fl4v.com
 
-Serveless one page website served by [AWS Lambda](https://aws.amazon.com/lambda/)
+## Developing
 
-### Requirements
-
-- [`Golang 1.x`](https://golang.org/dl/)
-- [`Docker`](https://www.docker.com/products/docker-desktop) - For testing locally
-- [`AWS SAM`](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started.html) - For testing locally
-
-### Build & Test Locally with SAM
+Once you've created a project and installed dependencies with `npm install`, start a development server:
 
 ```bash
-make build
-make run
+npm start
+
+# or start the server and open the app in a new browser tab
+npm start -- --open
 ```
 
-Invoke Lambda via a `GET` request on `localhost:3000/index`
+## Building
 
-### Deploy
-
-From the `pkg/infrastructure/` directory
+To create a production version of your app:
 
 ```bash
-# Check cdk diff
-cdk diff
-# Deploy
-cdk deploy
+npm run build
 ```
 
-#### To Do
+You can preview the production build with `npm run preview`.
 
-- [ ] Add unit tests
-- [ ] Add api gateway stack configuration
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
