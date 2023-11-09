@@ -12,7 +12,8 @@
   src: url('/fonts/SpaceGrotesk-VariableFont_wght.ttf');
 }
 
-:root {
+:root [data-theme='rocket'] {
   --theme-font-family-base: 'Rubik', serif;
   --theme-font-family-heading: 'Space Grotesk', serif;
+  --theme-rounded-base: 9999px;
 }
