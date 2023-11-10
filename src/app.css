@@ -16,4 +16,5 @@
   --theme-font-family-base: 'Rubik', serif;
   --theme-font-family-heading: 'Space Grotesk', serif;
   --theme-rounded-base: 9999px;
+  --theme-rounded-container: 8px;
 }
