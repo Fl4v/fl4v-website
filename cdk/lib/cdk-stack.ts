@@ -46,6 +46,7 @@ export class CdkStack extends Stack {
 		cloudfrontS3Bucket.grantRead(canonicalUser);
 
 		const cloudFrontDistribution = new Distribution(this, props.domain, {
+			defaultRootObject: 'index.html',
 			defaultBehavior: {
 				origin: new S3Origin(cloudfrontS3Bucket, {
 					originAccessIdentity: canonicalUser

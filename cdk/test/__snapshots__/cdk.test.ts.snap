@@ -223,6 +223,7 @@ exports[`Stack snapshot tests Prod stack 1`] = `
             "TargetOriginId": "fl4vprodfl4vcomOrigin1C883DFEB",
             "ViewerProtocolPolicy": "redirect-to-https",
           },
+          "DefaultRootObject": "index.html",
           "Enabled": true,
           "HttpVersion": "http2",
           "IPV6Enabled": true,
