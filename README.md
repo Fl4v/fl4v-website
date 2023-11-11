@@ -1,14 +1,13 @@
-# fl4v.com
+# [Fl4v.com](https://fl4v.com)
+
+`main` branch is used as a template for Skeleton's UI toolkit, as such dependencies and cdk are going to be bumped/updated in this public template before being merged into the `production` branch where the content for [Fl4v.com](https://fl4v.com) lives.
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install`, start a development server:
+Once you've created a project and installed dependencies with `npm ci`, start a development server:
 
 ```bash
 npm start
-
-# or start the server and open the app in a new browser tab
-npm start -- --open
 ```
 
 ## Building
