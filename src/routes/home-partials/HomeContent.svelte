@@ -34,7 +34,7 @@
 						<h3 class="h3">Fl4v.com Frontend</h3>
 						<p class="!text-sm">
 							Check the source code of this website <i class="bi bi-git" />
-							<a class="anchor" href="https://github.com/fl4v/fl4v.com" target="_blank" rel="noreferrer"
+							<a class="anchor" href="https://github.com/Fl4v/fl4v.com/tree/production" target="_blank" rel="noreferrer"
 								>fl4v/fl4v.com</a
 							>
 						</p>
