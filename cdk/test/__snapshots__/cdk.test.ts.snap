@@ -1,0 +1,321 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stack snapshot tests Prod stack 1`] = `
+{
+  "Mappings": {
+    "AWSCloudFrontPartitionHostedZoneIdMap": {
+      "aws": {
+        "zoneId": "Z2FDTNDATAQYW2",
+      },
+      "aws-cn": {
+        "zoneId": "Z3RFFRIM2A3IF5",
+      },
+    },
+  },
+  "Parameters": {
+    "BootstrapVersion": {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
+    },
+  },
+  "Resources": {
+    "aaaarecordroot016CB348": {
+      "Properties": {
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "fl4vcomB78BD089",
+              "DomainName",
+            ],
+          },
+          "HostedZoneId": {
+            "Fn::FindInMap": [
+              "AWSCloudFrontPartitionHostedZoneIdMap",
+              {
+                "Ref": "AWS::Partition",
+              },
+              "zoneId",
+            ],
+          },
+        },
+        "HostedZoneId": "DUMMY",
+        "Name": "fl4v.com.",
+        "Type": "AAAA",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
+    "accessidentity09D4AC8C": {
+      "Properties": {
+        "CloudFrontOriginAccessIdentityConfig": {
+          "Comment": "Allows CloudFront to reach the bucket",
+        },
+      },
+      "Type": "AWS::CloudFront::CloudFrontOriginAccessIdentity",
+    },
+    "arecordroot61DC1D81": {
+      "Properties": {
+        "AliasTarget": {
+          "DNSName": {
+            "Fn::GetAtt": [
+              "fl4vcomB78BD089",
+              "DomainName",
+            ],
+          },
+          "HostedZoneId": {
+            "Fn::FindInMap": [
+              "AWSCloudFrontPartitionHostedZoneIdMap",
+              {
+                "Ref": "AWS::Partition",
+              },
+              "zoneId",
+            ],
+          },
+        },
+        "HostedZoneId": "DUMMY",
+        "Name": "fl4v.com.",
+        "Type": "A",
+      },
+      "Type": "AWS::Route53::RecordSet",
+    },
+    "certificateEC031123": {
+      "Properties": {
+        "DomainName": "fl4v.com",
+        "DomainValidationOptions": [
+          {
+            "DomainName": "fl4v.com",
+            "ValidationDomain": "fl4v.com",
+          },
+        ],
+        "Tags": [
+          {
+            "Key": "env",
+            "Value": "prod",
+          },
+          {
+            "Key": "Name",
+            "Value": "fl4v.com",
+          },
+          {
+            "Key": "service",
+            "Value": "fl4v.com",
+          },
+        ],
+        "ValidationMethod": "EMAIL",
+      },
+      "Type": "AWS::CertificateManager::Certificate",
+    },
+    "cloudfronts3bucketCA3A8CDD": {
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "AccessControl": "Private",
+        "BucketName": "fl4v.com",
+        "Tags": [
+          {
+            "Key": "env",
+            "Value": "prod",
+          },
+          {
+            "Key": "service",
+            "Value": "fl4v.com",
+          },
+        ],
+      },
+      "Type": "AWS::S3::Bucket",
+      "UpdateReplacePolicy": "Retain",
+    },
+    "cloudfronts3bucketPolicy468F7DA1": {
+      "Properties": {
+        "Bucket": {
+          "Ref": "cloudfronts3bucketCA3A8CDD",
+        },
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "s3:GetObject*",
+                "s3:GetBucket*",
+                "s3:List*",
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "CanonicalUser": {
+                  "Fn::GetAtt": [
+                    "accessidentity09D4AC8C",
+                    "S3CanonicalUserId",
+                  ],
+                },
+              },
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "cloudfronts3bucketCA3A8CDD",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "cloudfronts3bucketCA3A8CDD",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": "s3:GetObject",
+              "Effect": "Allow",
+              "Principal": {
+                "CanonicalUser": {
+                  "Fn::GetAtt": [
+                    "accessidentity09D4AC8C",
+                    "S3CanonicalUserId",
+                  ],
+                },
+              },
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    {
+                      "Fn::GetAtt": [
+                        "cloudfronts3bucketCA3A8CDD",
+                        "Arn",
+                      ],
+                    },
+                    "/*",
+                  ],
+                ],
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
+    },
+    "fl4vcomB78BD089": {
+      "Properties": {
+        "DistributionConfig": {
+          "Aliases": [
+            "fl4v.com",
+          ],
+          "CustomErrorResponses": [
+            {
+              "ErrorCode": 404,
+              "ResponseCode": 404,
+              "ResponsePagePath": "/4xx-errors/404/",
+            },
+          ],
+          "DefaultCacheBehavior": {
+            "CachePolicyId": "658327ea-f89d-4fab-a63d-7e88639e58f6",
+            "Compress": true,
+            "ResponseHeadersPolicyId": {
+              "Ref": "responseheaderpolicy3D273F8A",
+            },
+            "TargetOriginId": "fl4vprodfl4vcomOrigin1C883DFEB",
+            "ViewerProtocolPolicy": "redirect-to-https",
+          },
+          "Enabled": true,
+          "HttpVersion": "http2",
+          "IPV6Enabled": true,
+          "Origins": [
+            {
+              "DomainName": {
+                "Fn::GetAtt": [
+                  "cloudfronts3bucketCA3A8CDD",
+                  "RegionalDomainName",
+                ],
+              },
+              "Id": "fl4vprodfl4vcomOrigin1C883DFEB",
+              "S3OriginConfig": {
+                "OriginAccessIdentity": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "origin-access-identity/cloudfront/",
+                      {
+                        "Ref": "accessidentity09D4AC8C",
+                      },
+                    ],
+                  ],
+                },
+              },
+            },
+          ],
+          "PriceClass": "PriceClass_100",
+          "ViewerCertificate": {
+            "AcmCertificateArn": {
+              "Ref": "certificateEC031123",
+            },
+            "MinimumProtocolVersion": "TLSv1.2_2021",
+            "SslSupportMethod": "sni-only",
+          },
+        },
+        "Tags": [
+          {
+            "Key": "env",
+            "Value": "prod",
+          },
+          {
+            "Key": "service",
+            "Value": "fl4v.com",
+          },
+        ],
+      },
+      "Type": "AWS::CloudFront::Distribution",
+    },
+    "responseheaderpolicy3D273F8A": {
+      "Properties": {
+        "ResponseHeadersPolicyConfig": {
+          "CustomHeadersConfig": {
+            "Items": [
+              {
+                "Header": "X-Robots-Tag",
+                "Override": true,
+                "Value": "noindex",
+              },
+            ],
+          },
+          "Name": "noindex-policy",
+        },
+      },
+      "Type": "AWS::CloudFront::ResponseHeadersPolicy",
+    },
+  },
+  "Rules": {
+    "CheckBootstrapVersion": {
+      "Assertions": [
+        {
+          "Assert": {
+            "Fn::Not": [
+              {
+                "Fn::Contains": [
+                  [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
+}
+`;
