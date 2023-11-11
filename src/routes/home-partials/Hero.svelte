@@ -14,7 +14,6 @@
 		<div class="flex gap-4">
 			<a href="https://github.com/Fl4v/fl4v.com#readme" target="_blank" class="btn variant-filled-primary">
 				<span>Documentation</span>
-				<i class="fa-solid fa-arrow-right-long" />
 			</a>
 		</div>
 	</div>
