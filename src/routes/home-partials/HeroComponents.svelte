@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { Avatar, ProgressRadial, RadioGroup, RadioItem, SlideToggle, LightSwitch } from '@skeletonlabs/skeleton';
+	import { Avatar, LightSwitch, ProgressRadial, RadioGroup, RadioItem } from '@skeletonlabs/skeleton';
 
 	let value = 0;
 </script>
 
 <div class="aspect-video relative">
 	<div class="anim-float-avatar absolute z-[1] top-[32%] left-[40%]">
-		<Avatar src="assets/avatar.jpg" width="w-32" shadow="shadow-xl" />
+		<Avatar src="assets/profile-pic.jpg?w=128&h=128&auto=format&fit=crop" width="w-32" shadow="shadow-xl" />
 	</div>
 	<div class="anim-float-progress anim-delay-200 absolute z-[1] top-[0%] left-[10%]">
 		<div class="card variant-glass p-4">

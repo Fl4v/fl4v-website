@@ -9,8 +9,7 @@
 		<p class="!text-xl max-w-[475px]">
 			Portofolio website built with <a class="anchor" href="https://www.skeleton.dev/" target="_blank" rel="noreferrer"
 				>Skeleton UI</a
-			>
-			and <a class="anchor" href="https://svelte.dev/" target="_blank" rel="noreferrer">Svelte</a>.
+			>.
 		</p>
 		<div class="flex gap-4">
 			<a href="https://github.com/Fl4v/fl4v.com#readme" target="_blank" class="btn variant-filled-primary">
