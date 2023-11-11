@@ -1,9 +1,21 @@
 {
 	"name": "fl4v.com",
-	"version": "1.0.0",
-	"private": true,
+	"description": "Skeleton UI, Svelte and Tailwind Site",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Fl4v/fl4v.com.git"
+	},
+	"bugs": {
+		"url": "https://github.com/Fl4v/fl4v.com/issues"
+	},
+	"homepage": "https://fl4v.com",
+	"author": {
+		"name": "Flavius Stroe"
+	},
+	"license": "MIT",
+	"private": false,
 	"scripts": {
-		"start": "vite dev",
+		"start": "vite dev --open",
 		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
