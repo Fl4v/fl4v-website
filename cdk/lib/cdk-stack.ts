@@ -1,5 +1,5 @@
 import { Stack, StackProps, Tags } from 'aws-cdk-lib';
-import { Certificate } from 'aws-cdk-lib/aws-certificatemanager';
+import { Certificate, CertificateValidation } from 'aws-cdk-lib/aws-certificatemanager';
 import {
 	Distribution,
 	OriginAccessIdentity,
@@ -34,9 +34,14 @@ export class CdkStack extends Stack {
 			}
 		});
 
+		const hostedZone = HostedZone.fromLookup(this, 'hosted-zone', {
+			domainName: props.domain
+		});
+
 		const certificate = new Certificate(this, 'certificate', {
 			domainName: props.domain,
-			certificateName: props.domain
+			certificateName: props.domain,
+			validation: CertificateValidation.fromDns()
 		});
 
 		const cloudfrontS3Bucket = new Bucket(this, 'cloudfront-s3-bucket', {
@@ -63,10 +68,6 @@ export class CdkStack extends Stack {
 					responsePagePath: '/4xx-errors/404/'
 				}
 			]
-		});
-
-		const hostedZone = HostedZone.fromLookup(this, 'hosted-zone', {
-			domainName: props.domain
 		});
 
 		new ARecord(this, 'a-record-root', {
